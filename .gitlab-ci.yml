@@ -44,9 +44,9 @@ test:
     - pip install -e .
     - pytest -v --cov=numi
     # run the command here
-  artifacts:
-    paths:
-      - dist/*.whl
+  # artifacts:
+  #   paths:
+  #     - dist/*.whl
 
 pages:
   script:
