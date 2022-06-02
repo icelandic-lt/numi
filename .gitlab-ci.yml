@@ -37,7 +37,7 @@ before_script:
 
 test:
   script:
-    - pip install requirments_dev.txt
+    - pip install -r requirments_dev.txt
     - python -m build
     # an alternative approach is to install and run:
     - pip install -e .
