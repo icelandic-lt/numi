@@ -37,8 +37,9 @@ before_script:
 
 test:
   script:
+    - python -m pip install --upgrade pip
     - pip install -r requirments_dev.txt
-    - python -m build
+    # - python -m build
     # an alternative approach is to install and run:
     - pip install -e .
     - pytest -v --cov=numi
