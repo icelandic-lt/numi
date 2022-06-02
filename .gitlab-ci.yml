@@ -29,17 +29,18 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
 
+# test:
+#   script:
+#     - python setup.py test
+#     - pip install tox flake8  # you can also use tox
+#     - tox -e py36,flake8
+
 test:
   script:
-    - python setup.py test
-    - pip install tox flake8  # you can also use tox
-    - tox -e py36,flake8
-
-run:
-  script:
-    - python setup.py bdist_wheel
+    - pip install requirments_dev.txt
+    - python -m build
     # an alternative approach is to install and run:
-    - pip install dist/*
+    - pip install -e .
     - pytest -v --cov=numi
     # run the command here
   artifacts:
