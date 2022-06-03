@@ -36,7 +36,7 @@ All the abrivations for the input string are as follows:
 |       |            |            |
 | kk    | masculine  | karlkyns   |
 | kvk   | feminine   | kvenkyns   |
-| hk   | neuter     | hvorugkyns |
+| hk    | neuter     | hvorugkyns |
 |       |            |            |
 | nf    | nominative | nefnifall  |
 | þf    | accusative | þolfall    |
@@ -58,10 +58,6 @@ This package is a work in progress. Rough ideas of development are listed in the
 There are probably some error that can be found and comments and corrects are highly welcomed. 
 
 We use `pytest` for development testing. Run `pip install requirements_dev.txt` for the development packages.
-
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
 
 
 ## Project status
