@@ -1,3 +1,4 @@
+from unicodedata import category
 from numi.utils import base 
 from numi.utils import declensions as dec
 import logging
@@ -5,6 +6,8 @@ import logging
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s()] %(message)s"
 logging.basicConfig(level=logging.DEBUG, format=FORMAT)
 logger = logging.getLogger(__name__)
+
+AT_AF = "at_af"
 
 
 def _get_from_base(n, f):
@@ -26,9 +29,9 @@ def _nums_20_99(n, f):
     n2 = int(str(n)[1])
     last_number = _get_from_base(n2, f)
     if len(last_number) == 2:
-        return [f"{base[n1,'at_af']} og {n2}" for n2 in last_number]
+        return [f"{base[n1,AT_AF]} og {n2}" for n2 in last_number]
     else:
-        return [f"{base[n1,'at_af']} og {base[n2,f]}"]
+        return [f"{base[n1,AT_AF]} og {base[n2,f]}"]
 
 def _nums_100_999(n, f):
     """
@@ -111,6 +114,12 @@ def parse_input_string(f):
     if f == None:
         return all_combinations
 
+
+    # If the input string is one of the input numbers that don't follow declention rules
+    # number we don't need look further. 
+    if f == AT_AF:
+        return [f]
+
     len_f = len(f.split('_'))
     # If len_f is longer than three means the user has inputed a invalid string
     if len_f > 3:
@@ -127,30 +136,36 @@ def parse_input_string(f):
         else:
             input_value_types.append(dec[v])
 
-    logger.debug(f"Input value types found are {input_value_types}")
     # if the length of len_f is three return the input in the correct order
+    new_f = []
     if len_f == 3:
-        f = {dec[v]:v for v in f.split('_')}
-        to_return = "{}_{}_{}".format(f[correct_order[0]],
-                                 f[correct_order[1]],
-                                 f[correct_order[2]])
-        logger.debug(f"Sorted input string is {to_return}")
-        return [to_return]
+        new_f.append(f)
 
-    # if the 
+    # if the user only adds one or two values we need to find the category that is missing
+    # and populate the string with those categories. 
+    categories_present = [dec[x] for x in f.split('_')]
+    missing_categories = [x for x in correct_order if x not in categories_present]
+    
     if len_f == 2:
+        for x in [k for k,v in dec.items() if v== missing_categories[0]]:
+            new_f.append(f"{f}_{x}")
+    
+    if len_f == 1:
+        for m_one in [k for k,v in dec.items() if v== missing_categories[0]]:
+            for m_two in [k for k,v in dec.items() if v== missing_categories[1]]:
+                new_f.append(f"{f}_{m_one}_{m_two}")
 
-        
+
+
+        # Now lest sort all the enties in new_f
         # Ert hérna!
-
-
-
-        f = {dec[v]:v for v in f.split('_')}
-        to_return = "{}_{}_{}".format(f[correct_order[0]],
-                                 f[correct_order[1]],
-                                 f[correct_order[2]])
-        logger.debug(f"Sorted input string is {to_return}")
-        return [to_return]
+    for i in range(len(new_f)):
+        new_f[i] = {dec[v]:v for v in new_f[i].split('_')}
+        new_f[i] = "{}_{}_{}".format(new_f[i][correct_order[0]],
+                                 new_f[i][correct_order[1]],
+                                 new_f[i][correct_order[2]])
+    logger.debug(f"Sorted input string is {new_f[i]}")
+    return new_f
 
 
 def find_valid_combinations(n,f):
