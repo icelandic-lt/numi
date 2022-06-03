@@ -16,13 +16,13 @@ To get started run
 pip install numi
 ```
 
-The main function in numi is `spell_out`. It takes in two parameters, an number and a string specifying the desired morphology. 
+The main function in numi is `spell_out`. It takes in two parameters, a number and a string specifying the desired morphology. 
 
 In the following example we want to get the numer `124` in plural, masculine and nominative form.  
 
 ```
-from numi import spell_out
-print(spell_out(124, "ft_kk_nf")
+> from numi import spell_out
+> print(spell_out(124, "ft_kk_nf")
 
 > ["eitt hundrað tuttugu og fjórir", "hundrað tuttugu og fjórir"]
 ```
@@ -36,22 +36,33 @@ All the abrivations for the input string are as follows:
 |       |            |            |
 | kk    | masculine  | karlkyns   |
 | kvk   | feminine   | kvenkyns   |
-| hvk   | neuter     | hvorugkyns |
+| hk   | neuter     | hvorugkyns |
 |       |            |            |
 | nf    | nominative | nefnifall  |
 | þf    | accusative | þolfall    |
 | þgf   | dative     | þágufall   |
 | ef    | genitive   | eignafall  |
 
+The Icelandic number system isn't the simplest (to state it lightly). The numbers one to four are declined for the respective cases and genders, of them the number `1` has both a sigular and plural form. Other numbers are not declined, except for those that are actually nouns.
+
+Numbers other than 1-4 that are also not nouns have the shorthand: 
+```
+at_af (án tölu og án fallbeygingar) 
+``` 
+(This is probably not a linguistically correct term and will be changed oance the author is scolded by a linguist)
+
 
 ## Contributing
-This package is a work in progress. We use `pytest` for development test and run `pip install requirements_dev.txt` for development packages.
+This package is a work in progress. Rough ideas of development are listed in the project status. 
+
+There are probably some error that can be found and comments and corrects are highly welcomed. 
+
+We use `pytest` for development testing. Run `pip install requirements_dev.txt` for the development packages.
+
 
 ## Authors and acknowledgment
 Show your appreciation to those who have contributed to the project.
 
-## License
-MIT  
 
 ## Project status
 * 0.0.5 - Support for numbers between 1-999
@@ -62,3 +73,6 @@ Future work
 * Add CLI support 
 * Add test script for development
 * Document the abbreviations 
+
+## License
+MIT
