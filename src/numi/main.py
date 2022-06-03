@@ -1,3 +1,4 @@
+from curses import ALL_MOUSE_EVENTS
 from unicodedata import category
 from numi.utils import base 
 from numi.utils import declensions as dec
@@ -107,7 +108,9 @@ def parse_input_string(f):
     for one of the three possible (number, gender, case).
     """
 
-    all_combinations = list(set([x[1] for x in base])) 
+    # Create a sorted list of all legal combination found in the base. It's sorted
+    # for the sake of testing a set is inherently unsorted
+    all_combinations = sorted(list(set([x[1] for x in base]))) 
     correct_order = ['number',"gender", "case"]
     # If the input string is none we return all possible combinations of
     # the input string as a list of strings
@@ -149,16 +152,14 @@ def parse_input_string(f):
     if len_f == 2:
         for x in [k for k,v in dec.items() if v== missing_categories[0]]:
             new_f.append(f"{f}_{x}")
-    
+
     if len_f == 1:
         for m_one in [k for k,v in dec.items() if v== missing_categories[0]]:
             for m_two in [k for k,v in dec.items() if v== missing_categories[1]]:
                 new_f.append(f"{f}_{m_one}_{m_two}")
 
 
-
-        # Now lest sort all the enties in new_f
-        # Ert hérna!
+    # Now lest sort all the enties in new_f
     for i in range(len(new_f)):
         new_f[i] = {dec[v]:v for v in new_f[i].split('_')}
         new_f[i] = "{}_{}_{}".format(new_f[i][correct_order[0]],
@@ -179,7 +180,6 @@ def find_valid_combinations(n,f):
 
     # if f is only one string at this point, that means the user added a
     # three value string. Let's check if is a valid input.
-    print(f[0])
     # if len(f) == 1:
     #     if (n,f[0]) in base:
     #         logging.debug(f"0: Adding {n,f[0]}")
