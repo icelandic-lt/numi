@@ -47,9 +47,6 @@ All the abrivations for the input string are as follows:
 ## Contributing
 This package is a work in progress. We use `pytest` for development test and run `pip install requirements_dev.txt` for development packages.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
 ## License
 MIT  
 
