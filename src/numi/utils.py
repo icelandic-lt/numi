@@ -87,3 +87,17 @@ base = {
     (1000, "at_af"): "þúsund",
     (1000000, "at_af"): "milljón",
 }
+
+
+declensions = {
+    "et":"number", 
+    "ft":"number",  
+    "kk":"gender", 
+    "kvk":"gender",
+    "hk":"gender",
+    "nf":"case",
+    "þf":"case",
+    "þgf":"case",
+    "ef": "case",
+}
+
