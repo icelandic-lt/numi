@@ -1,3 +1,5 @@
+AT_AF = "at_af"
+
 base = {
     (0, "at_af"): "núll",
     (1, "et_kk_nf"): "einn",
@@ -90,14 +92,22 @@ base = {
 
 
 declensions = {
-    "et":"number", 
-    "ft":"number",  
-    "kk":"gender", 
-    "kvk":"gender",
-    "hk":"gender",
-    "nf":"case",
-    "þf":"case",
-    "þgf":"case",
+    "et": "number",
+    "ft": "number",
+    "kk": "gender",
+    "kvk": "gender",
+    "hk": "gender",
+    "nf": "case",
+    "þf": "case",
+    "þgf": "case",
     "ef": "case",
 }
 
+
+def logger():
+    import logging
+
+    FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s()] %(message)s"
+    logging.basicConfig(level=logging.INFO, format=FORMAT)
+    logger = logging.getLogger(__name__)
+    return logger
