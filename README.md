@@ -68,7 +68,16 @@ This package is a work in progress. Rough ideas of development are listed in the
 
 There are probably some error that can be found and comments and corrects are highly welcomed. 
 
-We use `pytest` for development testing. Run `pip install requirements_dev.txt` for the development packages.
+To contribute please install the requiements file and use the `tests/test_numi.py` file with `pytest` for development testing.
+
+Setting up:
+```
+python venv .venv
+python -m pip install -r requirements_dev.txt
+pip install -e .
+pytest
+```
+
 
 
 ## Project status
@@ -77,11 +86,11 @@ We use `pytest` for development testing. Run `pip install requirements_dev.txt` 
     - Add test script for development
     - Document the abbreviations
 * 0.0.7 - Parse user input in a robust way/  
-
+* 0.0.8 - Add numbers support for numbers 1,000-999,999
+  
 Future work
 * Adding the first decimal place for all numbers
 * Add CLI support 
-* Add numbers support for numbers 1,000-999,999
 
 ## License
 MIT
