@@ -1,3 +1,4 @@
+import numbers
 from sys import prefix
 from tkinter import BOTH
 from numi.utils import base, AT_AF, logger
@@ -219,11 +220,44 @@ def _nums_100000_999999(n, f):
     return num
 
 
+def add_decimals(nums, nd, f):
+    """
+    Let's add the decimals to the numbers.
+    """
+    if len(nums) == 1:
+        nums = [[nd, f[0], nums]]
+
+    len_nd = len(str(nd))
+    idx = 2
+    if len_nd == 1:
+        idx = 1
+
+    for line in nums:
+        n, f = line[0], line[1]
+
+        f1 = 0
+        # if int(str(n)[-idx:]) in [x for x in range(10, 20)] or int(str(n)[-idx:]) in [
+        #     x for x in range(20, 101, 10)
+        # ]:
+        #     f1 = AT_AF
+        #     logging.debug(f"1: Setting f1 as {f1}")
+
+        # elif int(str(n)[-1]) in [2, 3, 4]:
+        #     f1 = "ft_hk_nf"
+        #     logging.debug(f"2: Setting f1 as {f1}")
+        # else:
+        #     f1 = AT_AF
+        #     logging.debug(f"2: Setting f1 as {f1}")
+        print("return", n, f1, f": {line[2][0]} komma {divert(n, f)}")
+    return nums
+
+
 def divert(n, f, prefix="both"):
     """
     Handles user input and returns a list of string with all
     possible variations of if input number
     """
+
     logging.debug(f"User input: {n,f}")
     # Numbers 1-19 add 20, 30, 40, 50, 60, 70, 80, 90
     if n in [x for x in range(1, 20)] or n in [x for x in range(20, 91, 10)]:
@@ -255,10 +289,22 @@ def spell_out(n, f=None):
     logging.debug(
         f"The the len of f after parse input is {len(f)} and of type {type(f)}"
     )
+    nd, numbers = None, None
+    if "," in str(n):
+        logging.debug(f"Input contains decimals")
+        n, nd = str(n).split(",")
+        n, nd = int(n), int(nd)
 
     f = find_valid_combinations(n, f)
+    print(n, f)
 
     if len(f) > 1:
-        return [[n, v, divert(n, v)] for v in f]
+        numbers = [[n, v, divert(n, v)] for v in f]
     else:
-        return divert(n, f[0])
+        numbers = [n, f[0], divert(n, f[0])]
+
+    return numbers
+    # if nd:
+    #     return add_decimals(numbers, nd, f)
+    # else:
+    #     return numbers
