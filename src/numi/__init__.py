@@ -86,3 +86,15 @@ from numi.main import spell_out
 # print(spell_out(979))
 # print(spell_out(980))
 # print(spell_out(92, "ft_kvk_þgf"))
+# print(spell_out(995))
+# for n in range(1, 1001):
+#     for line in spell_out(n):
+#         print(line)
+
+# print(spell_out(510000))  # fimmhundruð og tíu þúsund
+# print(spell_out(501000))  # fimmhundurð og eitt þúsund
+# print(spell_out(503000))  # fimmhundurð og þrjú þúsund
+# print(spell_out(212000))  # Tvö hundurð og tólf þúsund
+# print(spell_out(914000))  # níuhundurð og fjórtán þúsund
+# print(spell_out(18000))  # átján þúsund
+# print(spell_out(825000))  # áttahundurð tuttugu og fimm þúsnd

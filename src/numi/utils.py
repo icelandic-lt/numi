@@ -108,6 +108,6 @@ def logger():
     import logging
 
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s()] %(message)s"
-    logging.basicConfig(level=logging.INFO, format=FORMAT)
+    logging.basicConfig(level=logging.WARNING, format=FORMAT)
     logger = logging.getLogger(__name__)
     return logger

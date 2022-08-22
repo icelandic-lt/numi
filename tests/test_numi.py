@@ -24,7 +24,7 @@ from numi import spell_out
         ),
         (
             (92, "þgf_ft_kvk"),
-            [92, "ft_kvk_þgf", ["níutíu og tveimur", "níutíu og tveim"]],
+            [[92, "ft_kvk_þgf", ["níutíu og tveimur", "níutíu og tveim"]]],
         ),
         (
             (92, "kvk"),
@@ -44,9 +44,9 @@ from numi import spell_out
                 [92, "ft_kvk_ef", ["níutíu og tveggja"]],
             ],
         ),
-        ((100, "at_af"), [100, "at_af", ["eitt hundrað", "hundrað"]]),
-        ((79, "at_af"), [79, "at_af", ["sjötíu og níu"]]),
-        ((13, "at_af"), [13, "at_af", ["þrettán"]]),
+        ((100, "at_af"), [[100, "at_af", ["eitt hundrað", "hundrað"]]]),
+        ((79, "at_af"), [[79, "at_af", ["sjötíu og níu"]]]),
+        ((13, "at_af"), [[13, "at_af", ["þrettán"]]]),
         (
             (121, None),
             [
@@ -184,12 +184,14 @@ def test_messy_integer(test_input, expected):
         (
             (124, "ft_kk_nf"),
             [
-                124,
-                "ft_kk_nf",
-                ["eitt hundrað tuttugu og fjórir", "hundrað tuttugu og fjórir"],
+                [
+                    124,
+                    "ft_kk_nf",
+                    ["eitt hundrað tuttugu og fjórir", "hundrað tuttugu og fjórir"],
+                ]
             ],
         ),
-        ((791, "et_hk_nf"), [791, "et_hk_nf", ["sjö hundruð níutíu og eitt"]]),
+        ((791, "et_hk_nf"), [[791, "et_hk_nf", ["sjö hundruð níutíu og eitt"]]]),
         (
             (1, None),
             [
@@ -228,16 +230,16 @@ def test_0_999(test_input, expected):
 @pytest.mark.parametrize(
     "test_input, expected",
     [
-        ((1000, "at_af"), [1000, "at_af", ["eitt þúsund", "þúsund"]]),
+        ((1000, "at_af"), [[1000, "at_af", ["eitt þúsund", "þúsund"]]]),
         (
             (3124, "ft_kk_nf"),
-            [3124, "ft_kk_nf", ["þrjú þúsund eitt hundrað tuttugu og fjórir"]],
+            [[3124, "ft_kk_nf", ["þrjú þúsund eitt hundrað tuttugu og fjórir"]]],
         ),
         (
             (1791, "et_hk_nf"),
-            [1791, "et_hk_nf", ["eitt þúsund sjö hundruð níutíu og eitt"]],
+            [[1791, "et_hk_nf", ["eitt þúsund sjö hundruð níutíu og eitt"]]],
         ),
-        ((5001, "et_kk_nf"), [5001, "et_kk_nf", ["fimm þúsund og einn"]]),
+        ((5001, "et_kk_nf"), [[5001, "et_kk_nf", ["fimm þúsund og einn"]]]),
     ],
 )
 def test_1000_9999(test_input, expected):
@@ -321,7 +323,7 @@ def test_1000_9999(test_input, expected):
                 ],
             ],
         ),
-        ((10000, None), [10000, "at_af", ["tíu þúsund"]]),
+        ((10000, None), [[10000, "at_af", ["tíu þúsund"]]]),
         (
             (92, None),
             [
@@ -466,23 +468,33 @@ def test_1000_9999(test_input, expected):
         ),
         (
             (100021, "et_kvk_ef"),
-            [100021, "et_kvk_ef", ["hundrað þúsund tuttugu og einnar"]],
+            [[100021, "et_kvk_ef", ["hundrað þúsund tuttugu og einnar"]]],
         ),
-        ((100011, None), [100011, "at_af", ["hundrað þúsund og ellefu"]]),
-        ((100001, "et_kvk_ef"), [100001, "et_kvk_ef", ["hundrað þúsund og einnar"]]),
+        ((100011, None), [[100011, "at_af", ["hundrað þúsund og ellefu"]]]),
+        ((100001, "et_kvk_ef"), [[100001, "et_kvk_ef", ["hundrað þúsund og einnar"]]]),
         (
             (100221, "et_kvk_ef"),
-            [100221, "et_kvk_ef", ["hundrað þúsund tvö hundruð tuttugu og einnar"]],
+            [[100221, "et_kvk_ef", ["hundrað þúsund tvö hundruð tuttugu og einnar"]]],
         ),
-        ((100020, None), [100020, "at_af", ["hundrað þúsund og tuttugu"]]),
-        ((10021, "et_kvk_ef"), [10021, "et_kvk_ef", ["tíu þúsund tuttugu og einnar"]]),
-        ((10011, None), [10011, "at_af", ["tíu þúsund og ellefu"]]),
-        ((10001, "et_kvk_ef"), [10001, "et_kvk_ef", ["tíu þúsund og einnar"]]),
+        ((100020, None), [[100020, "at_af", ["hundrað þúsund og tuttugu"]]]),
+        (
+            (10021, "et_kvk_ef"),
+            [[10021, "et_kvk_ef", ["tíu þúsund tuttugu og einnar"]]],
+        ),
+        ((10011, None), [[10011, "at_af", ["tíu þúsund og ellefu"]]]),
+        ((10001, "et_kvk_ef"), [[10001, "et_kvk_ef", ["tíu þúsund og einnar"]]]),
         (
             (10221, "et_kvk_ef"),
-            [10221, "et_kvk_ef", ["tíu þúsund tvö hundruð tuttugu og einnar"]],
+            [[10221, "et_kvk_ef", ["tíu þúsund tvö hundruð tuttugu og einnar"]]],
         ),
-        ((10020, None), [10020, "at_af", ["tíu þúsund og tuttugu"]]),
+        ((10020, None), [[10020, "at_af", ["tíu þúsund og tuttugu"]]]),
+        ((510000, None), [[510000, "at_af", ["fimm hundruð og tíu þúsund"]]]),
+        ((501000, None), [[501000, "at_af", ["fimm hundruð og eitt þúsund"]]]),
+        ((503000, None), [[503000, "at_af", ["fimm hundruð og þrjú þúsund"]]]),
+        ((212000, None), [[212000, "at_af", ["tvö hundruð og tólf þúsund"]]]),
+        ((914000, None), [[914000, "at_af", ["níu hundruð og fjórtán þúsund"]]]),
+        ((18000, None), [[18000, "at_af", ["átján þúsund"]]]),
+        ((825000, None), [[825000, "at_af", ["átta hundruð tuttugu og fimm þúsund"]]]),
     ],
 )
 def test_10000_999999(test_input, expected):
