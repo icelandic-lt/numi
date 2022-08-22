@@ -23,7 +23,7 @@ In the following example, we want to get the number `124` in plural, masculine a
 > from numi import spell_out
 > print(spell_out(124, "ft_kk_nf")
 
-> ["eitt hundrað tuttugu og fjórir", "hundrað tuttugu og fjórir"]
+> [[124, "ft_kk_nf", ["eitt hundrað tuttugu og fjórir", "hundrað tuttugu og fjórir"]]]
 ```
 
 The spell_out function parses the input string so that the order of the values is not irrelevant. If one or all of the three values (number, gender, case) Numi will fill in all possible forms for that number. Note that the output will contain the string for the form values. 
@@ -87,7 +87,8 @@ pytest
     - Document the abbreviations
 * 0.0.7 - Parse user input in a robust way/  
 * 0.0.8 - Add numbers support for numbers 1,000-999,999
-  
+* 0.0.10 - Standerdized the output
+
 Future work
 * Adding the first decimal place for all numbers
 * Add CLI support 
