@@ -98,3 +98,9 @@ from numi.main import spell_out
 # print(spell_out(914000))  # níuhundurð og fjórtán þúsund
 # print(spell_out(18000))  # átján þúsund
 # print(spell_out(825000))  # áttahundurð tuttugu og fimm þúsnd
+
+
+# print(spell_out(2))
+# for line in spell_out(2):
+# print(line)
+# print(spell_out(3))

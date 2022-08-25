@@ -221,6 +221,23 @@ def test_messy_integer(test_input, expected):
                 [1, "ft_kvk_þgf", ["einum"]],
             ],
         ),
+        (
+            (3, None),
+            [
+                [3, "ft_hk_ef", ["þriggja"]],
+                [3, "ft_hk_nf", ["þrjú"]],
+                [3, "ft_hk_þf", ["þrjú"]],
+                [3, "ft_hk_þgf", ["þremur", "þrem"]],
+                [3, "ft_kk_ef", ["þriggja"]],
+                [3, "ft_kk_nf", ["þrír"]],
+                [3, "ft_kk_þf", ["þrjá"]],
+                [3, "ft_kk_þgf", ["þremur", "þrem"]],
+                [3, "ft_kvk_ef", ["þriggja"]],
+                [3, "ft_kvk_nf", ["þrjár"]],
+                [3, "ft_kvk_þf", ["þrjár"]],
+                [3, "ft_kvk_þgf", ["þremur", "þrem"]],
+            ],
+        ),
     ],
 )
 def test_0_999(test_input, expected):

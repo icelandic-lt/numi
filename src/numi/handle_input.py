@@ -21,12 +21,12 @@ def find_valid_combinations(n, f):
     #         new_f.append(f[0])
     # if len(str(n)) > 1:
     for v in f:
-        # if the whole number along with the input stris in the
+        # if the whole number along with the input string is in the
         # base, add the combination.
         if (n, v) in base:
             logging.debug(f"1: Adding {n,v}")
             new_f.append(v)
-            if n > 1:
+            if n > 4:
                 break
         # if the last two digit form a number with the input str
         # that is the base we add that to the combination.
@@ -46,6 +46,7 @@ def find_valid_combinations(n, f):
             logging.debug(f"3: Adding {n,v} based on {int(str(n)[-1])}")
             new_f.append(v)
 
+    logging.info(f"Found {len(new_f)} valid combination/s")
     if new_f:
         return new_f
     else:

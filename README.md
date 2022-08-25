@@ -88,7 +88,7 @@ pytest
 * 0.0.7 - Parse user input in a robust way/  
 * 0.0.8 - Add numbers support for numbers 1,000-999,999
 * 0.0.10 - Standerdized the output
-
+*
 Future work
 * Adding the first decimal place for all numbers
 * Add CLI support 
